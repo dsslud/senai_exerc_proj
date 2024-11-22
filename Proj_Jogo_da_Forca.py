@@ -6,7 +6,7 @@ def main():
     palavra_escondida = '_' * len(palavraSelecionada)
     tentativas = 5
 
-    print("Bem-vindo ao jogo da forca do DEV!")
+    print("Bem-vindo ao jogo da forca!")
     print(f"Você tem {tentativas} chances de acertar a palavra: {palavra_escondida}")
 
     while tentativas > 0:
@@ -20,20 +20,20 @@ def main():
                 else:
                     nova_palavra_escondida += palavra_escondida[i]
             palavra_escondida = nova_palavra_escondida
-            print(f"Boa! A letra '{letra}' está na palavra!")
+            print(f"A letra '{letra}' está na palavra!")
         else:
             tentativas -= 1
-            print(f"A letra '{letra}' não está na palavra. Você ainda tem {tentativas} tentativas.")
+            print(f"A letra '{letra}' não está na palavra escondida. Você ainda tem {tentativas} tentativas.")
 
-        # Exibe a palavra com as letras reveladas
+        #Mostra a palavra coma letra certa
         print(f"Palavra: {palavra_escondida}")
 
-        # Verifica se o jogador acertou a palavra
+        #Verifica se acertou a palavra
         if '_' not in palavra_escondida:
-            print(f"Parabéns! Você acertou a palavra: {palavraSelecionada}")
+            print(f"Parabéns! Você acertou a palavra era: {palavraSelecionada}")
             break
 
-    # Mensagem de derrota
+    #Fim de jogo
     if tentativas == 0:
         print(f"Você perdeu! A palavra era: {palavraSelecionada}")
 
