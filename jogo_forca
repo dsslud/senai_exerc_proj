@@ -1,27 +1,42 @@
 import random
 
-def jogo_forca_ludar():
+def main():
     palavras = ["python", "programacao", "desenvolvimento", "tecnologia"]
-    palavra_escondida = random.choice(palavras)
-    chances = 6
-    letra_certa = ["_"] * len(palavra_escondida)
+    palavraSelecionada = random.choice(palavras)
+    palavra_escondida = '_' * len(palavraSelecionada)
+    tentativas = 5
 
-    while chances > 0 and "_" in letra_certa:
-        print("A palavra é:", letra_certa)
+    print("Bem-vindo ao jogo da forca!")
+    print(f"Você tem {tentativas} chances de acertar a palavra: {palavra_escondida}")
+
+    while tentativas > 0:
         letra = input("Escolha uma letra: ")
 
-        if letra in palavra_escondida:
-            for i in (len(palavra_escondida)):
-                if palavra_escondida[i] == letra:
-                    letra_certa[i] = letra
+        if letra in palavraSelecionada:
+            nova_palavra_escondida = ''
+            for i in range(len(palavraSelecionada)):
+                if palavraSelecionada[i] == letra:
+                    nova_palavra_escondida += letra
+                else:
+                    nova_palavra_escondida += palavra_escondida[i]
+            palavra_escondida = nova_palavra_escondida
+            print(f"Boa! A letra '{letra}' está na palavra!")
         else:
-            chances -= 1
-            
+            tentativas -= 1
+            print(f"A letra '{letra}' não está na palavra. Você ainda tem {tentativas} tentativas.")
 
-    if "_" not in letra_certa:
-        print("Parabéns! Você adivinhou a palavra escondida:", palavra_escondida)
-    else:
-        print("Que pena, a palavra escondida era:", palavra_escondida)
+        #Mostra a palavra coma letra certa
+        print(f"Palavra: {palavra_escondida}")
+
+        #Verifica se acertou a palavra
+        if '_' not in palavra_escondida:
+            print(f"Parabéns! Você acertou a palavra: {palavraSelecionada}")
+            break
+
+    #Fim de jogo
+    if tentativas == 0:
+        print(f"Você perdeu! A palavra era: {palavraSelecionada}")
 
 if __name__ == "__main__":
-    jogo_forca_ludar()
+    main()
+
