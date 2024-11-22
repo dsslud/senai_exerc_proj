@@ -1,0 +1,27 @@
+import random
+
+def jogo_forca_ludar():
+    palavras = ["python", "programacao", "desenvolvimento", "tecnologia"]
+    palavra_escondida = random.choice(palavras)
+    chances = 6
+    letra_certa = ["_"] * len(palavra_escondida)
+
+    while chances > 0 and "_" in letra_certa:
+        print("A palavra é:", letra_certa)
+        letra = input("Escolha uma letra: ")
+
+        if letra in palavra_escondida:
+            for i in (len(palavra_escondida)):
+                if palavra_escondida[i] == letra:
+                    letra_certa[i] = letra
+        else:
+            chances -= 1
+            
+
+    if "_" not in letra_certa:
+        print("Parabéns! Você adivinhou a palavra escondida:", palavra_escondida)
+    else:
+        print("Que pena, a palavra escondida era:", palavra_escondida)
+
+if __name__ == "__main__":
+    jogo_forca_ludar()
